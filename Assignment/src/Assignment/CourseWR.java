@@ -22,7 +22,7 @@ import java.util.List;
  * @author Khuong Hung
  */
 public class CourseWR {
-    private static final String Course_File_Name = "course.txt";
+    private static final String Course_File_Name = "course.xml";
 
     public void write(List<Course> courseList) {
         FileOutputStream fos = null;

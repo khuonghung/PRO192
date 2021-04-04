@@ -5,8 +5,11 @@
  */
 package Assignment;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+
+
 
 public class CourseManager {
 /**
@@ -29,9 +32,11 @@ public class CourseManager {
         String name = inputName();
         int credit = inputCredit();
         Course course = new Course(name,id,credit);
+        System.out.println("Information of course has been added!");
         courseList.add(course);
         courseWR.write(courseList);
     }
+    
  
 
     public void edit(String id) {
@@ -61,9 +66,9 @@ public class CourseManager {
             if (courseList.get(i).getId().equals(id)) {
                 isExisted = true;
                 System.out.println("Information of course : ");
-                System.out.print(courseList.get(i).getId() + "\t\t");
-                System.out.print(courseList.get(i).getName()+ "\t\t");
-                System.out.print(courseList.get(i).getCredit() + "\n");
+                System.out.println("Course ID : " + courseList.get(i).getId() + "\t\t");
+                System.out.println("Course name : " + courseList.get(i).getName()+ "\t\t");
+                System.out.print("Course credit : " + courseList.get(i).getCredit() + "\n");
                 break;
             }
         }
@@ -90,16 +95,28 @@ public class CourseManager {
         }
     }
     
+    public class SortCourseByCredit implements Comparator<Course> {
+    @Override
+    public int compare(Course course1, Course course2) {
+        if (course1.getCredit()> course2.getCredit()) {
+            return 1;
+        }
+        return -1;
+    }
+    }
+    
     public void sortCourseByCredit() {
         Collections.sort(courseList, new SortCourseByCredit());
+        courseWR.write(courseList);     
     }
  
 
     public void show() {
-        System.out.println("Course ID  |     Course name    |  Course credit  ");
+        System.out.println("Course ID |                 Course name                |  Course credit  ");
         for (Course course : courseList) {
-            System.out.printf("%3s%20s%10d\n", course.getId(), course.getName(), course.getCredit());
+            System.out.printf("%3s%40s%20d\n", course.getId(), course.getName(), course.getCredit());
         }
+        
     }
  
     public String inputId() {
@@ -133,4 +150,6 @@ public class CourseManager {
     public void setCourseList(List<Course> courseList) {
         this.courseList = courseList;
     }
+    
+
 }

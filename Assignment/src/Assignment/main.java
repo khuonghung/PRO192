@@ -61,7 +61,9 @@ public class main {
         }
     }
     public static void showMenu() {
-        System.out.println("COURSE MANAGEMENT SYSTEM");
+        System.out.println("==============================");
+        System.out.println(" COURSE MANAGEMENT SYSTEM ");
+        System.out.println("==============================");
         System.out.println("--------------menu----------");
         System.out.println("1. A list of all available courses in the system.");
         System.out.println("2. Search and display information of a course by course id.");
